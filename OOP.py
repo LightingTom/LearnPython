@@ -44,3 +44,29 @@ c = foo2(3)
 # it will report an error if bind other attributes(like shown below)
 # c.var2 = 4
 # c.method = foo1_method (also not allowed)
+
+
+# '@property' can specify the read and write property of attributes of a class
+# Pay attention to the different between var, _var, __var
+# var is a public variable
+# _var is a special variable, means "I'm public but don't access me"
+# __var is a private variable
+# In '@property', we should use _var. If use var, self.var will be regarded as a function and it will cause a dead loop
+class foo3:
+    # '@property' equals to a getter method, and we can use a.var1 as get_var1()
+    @property
+    def var1(self):
+        return self._var1
+
+    @var1.setter
+    def var1(self,val):
+        self._var1 = val
+
+    @property
+    def var2(self):
+        return 123
+
+
+d = foo3()
+d.var1 = 3
+print(format('var1: %d, var2: %d') % (d.var1,d.var2))
