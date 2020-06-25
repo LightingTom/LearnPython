@@ -76,6 +76,9 @@ class Flyable(object):
 
 
 # Python also allowed multiple inheritance, it can be write like this
+# What's more, the name of runnable and flyable should be RunnableMixIn and FlyableMixIn
+# In this way, we can better understand the direct inheritance chain for Bird and Cat
+# MixIn means the additional function
 class Bird(animal,Flyable):
     pass
 
