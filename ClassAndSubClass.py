@@ -30,14 +30,14 @@ class animal(object):
     def __init__(self,intro):
         self.__intro = intro
 
-    def run(self):
+    def move(self):
         print('animal is running')
 
     def introduce(self):
         print(format('My name is %s, my color is %s') % (self.__class__.__name__, self.__intro))
 
 class dog(animal):
-    def run(self):
+    def move(self):
         print('dog is running')
 
     def eat(self):
@@ -45,7 +45,7 @@ class dog(animal):
 
 
 class rabbit(animal):
-    def run(self):
+    def move(self):
         print('rabbit is jumping')
 
     def eat(self):
@@ -54,12 +54,39 @@ class rabbit(animal):
 
 b = animal('Black and white')
 b.introduce()
-b.run()
+b.move()
 c = dog('Yellow')
 c.introduce()
-c.run()
+c.move()
 c.eat()
 d = rabbit('white')
 d.introduce()
-d.run()
+d.move()
 d.eat()
+
+
+class Runnable(object):
+    def run(self):
+        print(self.__class__.__name__, 'is running')
+
+
+class Flyable(object):
+    def fly(self):
+        print (self.__class__.__name__, 'is flying')
+
+
+# Python also allowed multiple inheritance, it can be write like this
+class Bird(animal,Flyable):
+    pass
+
+
+class Cat(animal,Runnable):
+    pass
+
+
+e = Bird('Green, Red, Yellow')
+f = Cat('Black')
+e.fly()
+e.introduce()
+f.run()
+f.introduce()

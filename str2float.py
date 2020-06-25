@@ -22,4 +22,4 @@ def str2float(s):
     return result
 
 
-str2float('123.345')
+print(str2float('123.345'))
