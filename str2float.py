@@ -22,4 +22,5 @@ def str2float(s):
     return result
 
 
-print(str2float('123.345'))
+if __name__ == '__main__':
+    print(str2float('123.345'))
